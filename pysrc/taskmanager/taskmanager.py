@@ -4,13 +4,14 @@ import attr
 
 @attr.s
 class Task:
-    action: str = attr.ib()
-    params: List[str] = attr.ib(default=[])
+    id: int = attr.ib()
+    request: str = attr.ib(default='')
+    response: str = attr.ib(default='')
 
     
-TASKS = []
+TASKS: List[Task] = []
 
-NO_TASK = Task(action='None')
+NO_TASK = Task(id=-1)
 
 
 

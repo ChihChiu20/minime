@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Content Script Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 10px;
+    }
+
+    button {
+      padding: 10px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>Highlight Paragraphs</h2>
+  <button id="highlight">Highlight</button>
+  <script>
+    document.getElementById('highlight').addEventListener('click', async () => {
+      await chrome.scripting.executeScript({
+        target: { allFrames: true, tabId: (await chrome.tabs.query({ active: true })[0]).frameId },
+        function() { content },
+      })
+    });
+  </script>
+</body>

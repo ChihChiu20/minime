@@ -1,4 +1,5 @@
 from flask import Flask, jsonify
+import json
 
 import attr
 
@@ -24,6 +25,8 @@ def pop_next_task():
 
 
 @app.route("/add_task")
+def add_task(task_json):
+    taskmanager.add_task(json.loads(task_json))
 
 
 

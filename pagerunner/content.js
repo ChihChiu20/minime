@@ -1,4 +1,4 @@
-var
+var TASKMANAGER_ADDRESS = 'localhost:5000';
 
 var INTERNAL_SEC = 3;
 
@@ -22,8 +22,20 @@ function isRoot() {
   return window.location.pathname === '/';
 }
 
-function runNextTask() {
+function httpGet(theUrl) {
+  var xmlHttp = new XMLHttpRequest();
+  xmlHttp.open("GET", theUrl, false); // false for synchronous request
+  xmlHttp.send(null);
+  return xmlHttp.responseText;
+}
 
+function runNextTask() {
+  var task = JSON.parse(httpGet(`http://${TASKMANAGER_ADDRESS}/pop_next_task`));
+  if (task.id === -1) {
+    return;
+  }
+
+  console.log(task);
 }
 
 function executeActionMain() {
@@ -31,6 +43,7 @@ function executeActionMain() {
 }
 
 function main() {
+  console.log('WELCOME');
   setInterval(executeActionMain, INTERNAL_SEC * 1000);
 }
 

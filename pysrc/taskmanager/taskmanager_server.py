@@ -3,7 +3,7 @@ import json
 
 import attr
 
-import pysrc.taskmanager.taskmanager as taskmanager
+import taskmanager
 
 app = Flask(__name__)
 
@@ -31,6 +31,6 @@ def add_task(task_json):
 
 
 if __name__ == "__main__":
-    taskmanager.add_task(taskmanager.Task(action="test1"))
-    taskmanager.add_task(taskmanager.Task(action="test2", params=["a","b"]))
+    taskmanager.add_task(taskmanager.Task({'action': "test1"}))
+    taskmanager.add_task(taskmanager.Task({'action': "test2", 'params': ["a","b"]}))
     app.run()

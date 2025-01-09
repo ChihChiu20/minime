@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Simple Content Script Example",
-  "version": "1.0",
-  "description": "A Chrome Extension that highlights all paragraphs on a page.",
+  "name": "PageRunner",
+  "version": "1.001",
+  "description": "A Chrome Extension that run tasks.",
   "permissions": [
     "scripting"
   ],
@@ -19,7 +19,8 @@
       ],
       "js": [
         "content.js"
-      ]
+      ],
+      "all_frames": true
     }
   ],
   "action": {

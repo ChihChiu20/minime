@@ -48,3 +48,4 @@ function main() {
 }
 
 main();
+console.log('what going on?');
